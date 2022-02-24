@@ -18,6 +18,22 @@ class Products extends GetxController{
     return [..._items];
   }
 
-List
+  // Retrieve data from wishList
+
+List<Items> get wishListItems{
+  return _items.where((item)=>item.inWishList.value == true ).toList();
+}
+// Add Items to wishList
+void addItem(int id){
+  final int index = _items.indexWhere((item) => item.id==id);
+  _items[index].inWishList.value = true;
+}
+
+// Remove Items from WishList
+
+void removeItem(int id){
+  final int index = _items.indexWhere((item) => item.id == id);
+  _items[index].inWishList.value = false;
+}
 
 }
